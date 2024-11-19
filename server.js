@@ -3,7 +3,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
-const KanbanRoutes = require("./routes/todoRoutes");
+const taskRoutes = require("./routes/taskRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const priorityRoutes = require("./routes/priorityRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const templateRoutes = require("./routes/templateRoutes");
+const themeRoutes = require("./routes/themeRoutes");
+const userRoutes = require("./routes/userRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,7 +32,14 @@ mongoose
 	.catch((err) => console.log("non connecté"));
 
 // Utilisation des routes
-app.use("/", KanbanRoutes);
+app.use("/task", taskRoutes);
+app.use("/category", categoryRoutes);
+app.use("/priority", priorityRoutes);
+app.use("/project", projectRoutes);
+app.use("/template", templateRoutes);
+app.use("/theme", themeRoutes);
+app.use("/user", userRoutes);
+app.use("/message", messageRoutes);
 
 // Démarrer le serveur
 app.listen(PORT, () => {
